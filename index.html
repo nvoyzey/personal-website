@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Nick Voyzey</title>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500&display=swap" rel="stylesheet">
+  <style>
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Orbitron', sans-serif;
+      background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+      color: #e0e0e0;
+    }
+
+    nav {
+      position: fixed;
+      top: 20px;
+      right: 30px;
+      z-index: 1000;
+    }
+
+    nav a {
+      color: #00ffe7;
+      text-decoration: none;
+      margin-left: 20px;
+      font-weight: bold;
+      transition: color 0.3s;
+    }
+
+    nav a:hover {
+      color: #ffffff;
+    }
+
+    section {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 40px 20px;
+      opacity: 0;
+      transform: translateY(40px);
+      transition: opacity 1s ease, transform 1s ease;
+    }
+
+    section.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    h1 {
+      font-size: 3rem;
+      color: #00ffe7;
+      text-shadow: 0 0 10px #00ffe7;
+    }
+
+    p {
+      font-size: 1.2rem;
+      color: #c0c0c0;
+    }
+
+    .avatar {
+      border-radius: 50%;
+      width: 160px;
+      height: 160px;
+      object-fit: cover;
+      box-shadow: 0 0 20px rgba(0, 255, 231, 0.5);
+      margin: 1em 0;
+    }
+
+    .coming-soon {
+      font-size: 1rem;
+      color: #888;
+    }
+  </style>
+</head>
+<body>
+  <nav>
+    <a href="#home">Home</a>
+    <a href="#about">About</a>
+    <a href="#chat">Chat</a>
+    <a href="#contact">Contact</a>
+  </nav>
+
+  <section id="home">
+    <h1>Nick Voyzey</h1>
+    <p>Welcome to my digital space</p>
+    <img src="avatar.png" alt="AI Avatar of Nick" class="avatar">
+    <p class="coming-soon">Scroll down to explore more</p>
+  </section>
+
+  <section id="about">
+    <h1 style="color: #00ffe7; text-shadow: 0 0 12px #00ffe7; margin-bottom: 1em;">About Me</h1>
+    <div style="max-width: 800px; background: rgba(255,255,255,0.05); padding: 30px; border-radius: 12px; box-shadow: 0 0 25px rgba(0, 255, 231, 0.2); line-height: 1.7;">
+      <p style="font-size: 1.2rem;"><strong>Hi, I’m Nick Voyzey,</strong> a business technologist all in on AI.</p>
+
+      <p>I believe artificial intelligence will profoundly reshape every corner of society, and I’m driven to be on the front lines of that transformation. Whether it's helping companies adapt, building tools to unlock new efficiencies, or guiding teams through digital change, I want to ensure organizations don’t just use AI—they thrive with it.</p>
+
+      <p>That mission crystallized during my time on the Data and AI Transformation team at Moderna, where I worked alongside passionate AI champions at the forefront of generative AI. It was the early days of the technology, but the stakes were real: empowering teams to save lives through mRNA innovation. That experience didn’t just teach me what AI can do, it showed me why it matters.</p>
+
+      <p>Now based in New York City, I’ve joined ING’s Operations and Change Management program, a two year rotation that gives me the chance to work across functions and bring tech driven change to a global bank.</p>
+
+      <p>Outside of work, I’m just as energized by motion and challenge, whether that’s running, skiing, climbing, or planning my next trip.</p>
+
+      <p style="margin-top: 2em; font-style: italic; color: #88ffff;">I understand the risks of AI, but I see even more possibility. If you're curious about how I think, feel free to talk to NickGPT below.</p>
+    </div>
+  </section>
+
+  <section id="chat">
+    <h1>Talk to NickGPT</h1>
+    <p>Get to know me through my AI persona. Ask me anything.</p>
+    <a href="https://chatgpt.com/g/g-68407993865081919a22a519cb8b31df-nickgpt" 
+       target="_blank" 
+       style="padding: 12px 24px; background-color: #00ffe7; color: #0f2027; font-weight: bold; text-decoration: none; border-radius: 8px; box-shadow: 0 0 12px rgba(0, 255, 231, 0.4);">
+       Launch NickGPT
+    </a>
+  </section>
+
+  <section id="contact">
+    <h1>Contact</h1>
+    <p>Email: <a href="mailto:nnvoyzey@gmail.com" style="color: #00ffe7; text-decoration: none;">nnvoyzey@gmail.com</a></p>
+    <p>Phone: <a href="tel:2169041439" style="color: #00ffe7; text-decoration: none;">216-904-1439</a></p>
+    <p>LinkedIn: <a href="https://www.linkedin.com/in/nickvoyzey" target="_blank" style="color: #00ffe7; text-decoration: none;">www.linkedin.com/in/nickvoyzey</a></p>
+  </section>
+
+  <script>
+    // Add reveal effect on scroll
+    const sections = document.querySelectorAll('section');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, {
+      threshold: 0.1
+    });
+
+    sections.forEach(section => {
+      observer.observe(section);
+    });
+  </script>
+</body>
+</html>
