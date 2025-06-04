@@ -110,6 +110,16 @@
       border-radius: 16px;
       box-shadow: 0 0 25px rgba(0, 255, 231, 0.1);
     }
+      .video-fade {
+      opacity: 0;
+      transform: scale(0.95);
+      transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+    }
+
+    .video-fade.visible {
+      opacity: 1;
+      transform: scale(1);
+    }
   </style>
 </head>
 <body>
@@ -117,6 +127,7 @@
     <a href="#home">Home</a>
     <a href="#about">About</a>
     <a href="#chat">Chat</a>
+    <a href="#gallery">Gallery</a>
     <a href="#contact">Contact</a>
   </nav>
 
@@ -139,10 +150,25 @@
     </div>
   </section>
 
-  <section id="chat">
-    <h1>Talk to NickGPT</h1>
-    <p>Get to know me through my AI persona. Ask me anything.</p>
-    <a href="https://chatgpt.com/g/g-68407993865081919a22a519cb8b31df-nickgpt" target="_blank" class="cta-button">Launch NickGPT</a>
+  $1
+
+  <section id="gallery">
+    <h1>Gallery</h1>
+    <p>A showcase of AI-generated videos I've created.</p>
+    <div style="display: flex; flex-direction: column; align-items: center; gap: 40px; padding: 20px; max-width: 960px; width: 100%;">
+  <video controls style="width: 100%; max-width: 960px; border-radius: 12px; box-shadow: 0 0 16px rgba(0,255,231,0.25);" class="video-fade">
+    <source src="Cowboy.mp4" type="video/mp4">
+    Your browser does not support the video tag.
+  </video>
+  <video controls style="width: 100%; max-width: 960px; border-radius: 12px; box-shadow: 0 0 16px rgba(0,255,231,0.25);" class="video-fade">
+    <source src="Ferrari.mp4" type="video/mp4">
+    Your browser does not support the video tag.
+  </video>
+  <video controls style="width: 100%; max-width: 960px; border-radius: 12px; box-shadow: 0 0 16px rgba(0,255,231,0.25);" class="video-fade">
+    <source src="Train.mp4" type="video/mp4">
+    Your browser does not support the video tag.
+  </video>
+</div>
   </section>
 
   <section id="contact">
@@ -151,5 +177,30 @@
     <p>Phone: <a href="tel:2169041439" style="color: #00ffe7; text-decoration: none;">216-904-1439</a></p>
     <p>LinkedIn: <a href="https://www.linkedin.com/in/nickvoyzey" target="_blank" style="color: #00ffe7; text-decoration: none;">www.linkedin.com/in/nickvoyzey</a></p>
   </section>
+
+  
+<script>
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        if (entry.target.tagName === 'VIDEO') {
+          entry.target.play();
+        }
+      } else {
+        if (entry.target.tagName === 'VIDEO') {
+          entry.target.pause();
+        }
+      }
+    });
+  }, { threshold: 0.6 });
+
+  document.querySelectorAll('video').forEach(el => {
+    el.classList.add('video-fade');
+    el.setAttribute('playsinline', 'true');
+    el.setAttribute('preload', 'auto');
+    observer.observe(el);
+  });
+</script>
 </body>
 </html>
